@@ -1,0 +1,66 @@
+" -------------------------------- Mappings ----------------------------------
+
+" Source this file
+nnoremap s :source ~/.vimperatorrc<cr>
+
+nnoremap i gi
+nnoremap gi i
+
+nnoremap ; :
+nnoremap : ;
+
+nnoremap = +
+
+" Faster Scrolling
+nnoremap h 5h
+nnoremap j 5j
+nnoremap k 5k
+nnoremap l 5l
+
+nnoremap H 0
+nnoremap J gg
+nnoremap K G
+nnoremap L $
+
+" Navigate tabs with parens
+nnoremap ( :tp<cr>
+nnoremap ) :tn<cr>
+
+" This overrides the 'repeat' command, which I think is kind of an overkill,
+" this, thereby, stays here until I find an use for the 'repeat' command
+nnoremap , :back<cr>
+nnoremap . :forward<cr>
+
+nnoremap <c-o> `p
+nnoremap <c-i> <nop>
+
+" Every search
+nnoremap / mp/
+
+nnoremap gg mpgg
+nnoremap G  mpG
+
+nnoremap R :reloadall<cr>
+
+" -------------------------------- Options ------------------------------------
+
+" No scrollbars
+set noscrollbars
+
+" GUI shows only tabs
+set gui=none,tabs
+
+" Status
+set status=zoomlevel,input,location,bookmark,history,tabcount,position,ssl
+
+" Shows links in status line
+set showstatuslinks=1
+
+set animations=false
+
+" Shows statusline even in full screen
+set statuslinevisibility=visible
+
+hi clear
+"colorscheme custom
+

@@ -1,0 +1,41 @@
+# You already know
+bind-key ; cmdline
+
+bind-key SPACE open
+
+bind-key k up
+bind-key j down
+
+# Overrides above
+bind-key u pageup article
+bind-key d pagedown article
+
+bind-key ^U pageup
+bind-key ^D pagedown
+
+# Next and previous
+bind-key n next-unread
+bind-key p prev-unread
+
+bind-key n next-unread
+bind-key p prev-unread
+
+bind-key n next-unread-feed articlelist
+bind-key p prev-unread-feed articlelist
+
+# Dialog
+bind-key ^N next-dialog
+bind-key ^P prev-dialog
+
+# Sorting
+bind-key s sort
+bind-key S revsort
+bind-key ^S save
+
+# Urls
+bind-key E edit-urls
+bind-key ^R reload-urls
+
+# Toggle/Clears
+bind-key c toggle-article-read
+bind-key C mark-all-feed-read

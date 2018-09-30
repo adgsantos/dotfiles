@@ -1,0 +1,38 @@
+! ****************************************************************************
+! **************************** XTerm Configuration ***************************
+! ****************************************************************************
+
+!!!! Name
+XTerm*termName: xterm-256color
+
+!!!! Fonts
+XTerm*faceName: monofur:size=10:antialias=true:autohint=true;
+
+XTerm*allowBoldFonts: true
+XTerm*locale: true
+XTerm*fontWarnings: 2
+
+!!!! Scrolling
+! Makes scroll works as expected in an alternate screen
+XTerm*alternateScroll: true
+
+! Output in a program will not force scrolling
+XTerm*scrollTtyOutput: false
+
+! Pressing a key will force the scrollbar to go to the bottom
+XTerm*scrollKey: true
+
+! Buffer size
+XTerm*saveLines: 4096
+
+!!!! Misc
+! Shows selection properly, EOLs well defined
+XTerm*highlightSelection: true
+
+! When copy-pasting a line does not include \n, which would force execution
+XTerm*cutNewline: true
+
+XTerm*autoWrap: true
+!XTerm*selectToClipboard: true
+!XTerm*keepClipboard: true
+

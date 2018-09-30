@@ -1,0 +1,72 @@
+"" Mappings
+
+" Source this file
+nmap -builtin s :source ~/.pentadactylrc<cr>
+
+nmap -builtin i gi
+nmap -builtin gi i
+
+nmap -builtin ; :
+nmap -builtin : ;
+
+nmap -builtin = +
+
+" Faster Scrolling
+nmap -builtin h 5h
+nmap -builtin j 5j
+nmap -builtin k 5k
+nmap -builtin l 5l
+
+" Why not?
+nmap -builtin H 0
+nmap -builtin J gg
+nmap -builtin K G
+nmap -builtin L $
+
+" Navigate tabs with square brackets
+nmap -builtin ] gT
+nmap -builtin [ gt
+
+nmap -builtin , H
+nmap -builtin . L
+
+" Before every relevant command (this is because marks are not fully
+" implemented and this is not scriptable) it shall record in the letter `p` the
+" previous position
+nmap -builtin <c-o> `p
+nmap -builtin <c-i> <nop>
+
+" Searches with regex by default
+nmap -builtin / mp/\r
+nmap -builtin ? mp?\r
+
+nmap -builtin gg mpgg
+nmap -builtin G  mpG
+
+" Esc also clears highlighting
+nmap -builtin <esc> :noh<cr><esc>
+
+nmap -builtin <S-space> <nop>
+nmap -builtin <space>   <nop>
+
+nmap -builtin R :reloadall<cr>
+
+""" Options
+
+" Hlsearch
+set hlfind
+
+" Hide scrollbars
+set guioptions-=br
+
+" Tab number
+set guioptions+=n
+
+" Shows links in status line
+set showstatuslinks=status
+
+" Little Hack: Shows statusline even in full screen
+" This is because there's no option for that in dactyl
+au Fullscreen .* set guioptions+=s
+
+color custom

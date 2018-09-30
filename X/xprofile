@@ -1,0 +1,9 @@
+#!/bin/bash
+userresources=$HOME/.Xresources
+userresources_d=$HOME/.Xresources.d
+
+if [ -f "$userresources" ]; then
+    xrdb -merge -I"$userresources_d" "$userresources" &
+fi
+
+$HOME/scripts/kbd_init.sh &

@@ -1,0 +1,20 @@
+#!/bin/bash
+source ~/.xprofile
+
+if [[ -n `xrandr | grep " connected" | grep 'HDMI2'` ]]; then
+	~/scripts/extend.sh &
+fi
+
+# Some programs
+mpd &
+dunst &
+xbacklight -set 20% &
+
+hsetroot -fill ~/.wallpaper
+unclutter -b --timeout 3 &
+nm-applet &
+
+dropbox-cli start &
+
+# Sets default cursor to be a left ptr and not an X
+xsetroot -cursor_name left_ptr &

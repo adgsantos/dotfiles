@@ -1,0 +1,11 @@
+st.font: jmk Neep Alt:size=11:style=SemiCondensed
+
+st.borderpx:     10
+
+st.cursorshape:      2
+st.cursorthickness:  2
+
+st.blinktimeout: 800
+
+st.alpha: 0
+

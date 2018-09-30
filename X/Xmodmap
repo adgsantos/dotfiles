@@ -1,0 +1,4 @@
+!! Configuration file for key remapping
+
+! Map composite key to `super`
+keycode 135 = Super_L

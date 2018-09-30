@@ -1,0 +1,8 @@
+# color <element> <foreground color> <background color> [<attribute> ...]
+color info             color5   default   bold
+color listfocus        color3   default
+
+# highlight <target> <regex> <fgcolor> [<bgcolor> [<attribute> ...]]
+highlight article "^(Feed|Title|Author|Link|Date):" color3 default bold
+highlight all "https?://[^ ]+" default default underline
+

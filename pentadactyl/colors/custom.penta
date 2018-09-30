@@ -1,0 +1,48 @@
+hi clear
+
+hi FontFixed        font-family: Hack; min-height: 22px;
+
+hi -link=FontFixed  Normal
+hi -append Normal   font-weight: bold; background: #1f1f1f !important; color: #c0b18b !important;
+
+hi -link=Normal Hint
+hi -append Hint     border: 2px solid rgb(165,1,105); padding: 4px; border-radius: 3px; margin-left: -25px; line-height:1em;
+
+hi -link=Normal HintActive
+hi -link=Normal HintElem
+
+hi -append HintActive color: #c0b18b !important; background: #1f1f1f !important;
+hi -append HintElem   color: #1f1f1f !important; background: #c0b18b !important;
+
+hi -link=HintActive Find
+
+hi -link=Normal     StatusLine
+hi -link=StatusLine StatusLineBroken
+hi -link=StatusLine StatusLineExtended
+hi -link=StatusLine StatusLineNormal
+hi -link=StatusLine StatusLineSecure
+hi -link=StatusLine StatusLineModeMsg
+hi -link=StatusLine StatusLineMoreMsg
+hi -link=StatusLine StatusNormal
+hi -link=StatusLine StatusQuestion
+hi -link=StatusLine StatusWarningMsg
+
+hi -link=StatusLine ModeMsg
+hi -link=StatusLine MoreMsg
+hi -link=MoreMsg    Question
+
+hi -append MoreMsg  color:green !important;
+
+hi Title              color: #775759 !important;
+hi NonText            color: #535C5C !important;
+hi CompDesc           color: #535C5C !important;
+hi CompTitleSep       color: #c0b18b !important;
+hi CompItem[selected] color: #1f1f1f !important; background: #d17b49 !important;
+
+hi -link=CompDesc URL
+hi -link=Title    CompTitle
+hi -link=Title    HelpInfoLabel
+
+hi -link=Normal EditorError
+hi -append EditorError color:red !important; background: #1f1f1f !important;
+hi -link=EditorError ErrorMsg

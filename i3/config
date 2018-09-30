@@ -1,0 +1,327 @@
+################################## Options #################################
+set $terminal alacritty -e tmux
+set $editor   nvim
+set $mod      Mod4
+
+set $ws1  1
+set $ws2  2
+set $ws3  3
+set $ws4  4
+set $ws5  5
+set $ws6  6
+set $ws7  7
+set $ws8  8
+set $ws9  9
+set $ws10 10
+
+# Default values and configuration for gaps
+set $default_gaps_inner 10
+set $default_gaps_outer 4
+gaps inner $default_gaps_inner
+gaps outer $default_gaps_outer
+
+# Font
+font pango:Hack, FontAwesome 12
+
+# Draw borders around the container if it is not the only one in the workspace
+smart_borders on
+
+# Use a 1 pixel width window border
+new_window pixel 1
+
+workspace_auto_back_and_forth no
+
+force_display_urgency_hint 0 ms
+
+focus_on_window_activation urgent
+
+focus_follows_mouse no
+
+floating_minimum_size 100 x 100
+floating_maximum_size -1 x -1
+
+# Colors
+set $transparent  #00000000
+
+set_from_resource $bg  background #000000
+set_from_resource $fg  foreground #000000
+
+set_from_resource $darkblack   color0  #000000
+set_from_resource $black       color8  #000000
+set_from_resource $darkred     color1  #000000
+set_from_resource $red         color9  #000000
+set_from_resource $darkgreen   color2  #000000
+set_from_resource $green       color10 #000000
+set_from_resource $darkyellow  color3  #000000
+set_from_resource $yellow      color11 #000000
+set_from_resource $darkblue    color4  #000000
+set_from_resource $blue        color12 #000000
+set_from_resource $darkmagenta color5  #000000
+set_from_resource $magenta     color13 #000000
+set_from_resource $darkcyan    color6  #000000
+set_from_resource $cyan        color14 #000000
+set_from_resource $darkwhite   color7  #000000
+set_from_resource $white       color15 #000000
+
+# CLASS                 BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
+client.focused          $bg         $bg         $magenta    $magenta    $magenta
+client.unfocused        $bg         $bg         $white      $magenta    $bg
+client.focused_inactive $bg         $bg         $magenta    $magenta    $bg
+client.urgent           $darkred    $darkred    $black      $darkred    $darkred
+client.background       $bg
+
+
+################################## Rules #################################
+
+for_window [window_role="Preferences"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="pop-up"]      floating enable
+for_window [window_role="bubble"]      floating enable
+
+for_window [window_type="dialog"]      floating enable
+for_window [window_type="menu"]        floating enable
+
+for_window [instance="__scratchpad"]   floating enable
+for_window [instance="__nmtui"]        floating enable
+
+for_window [class="(?i)gsimplecal"]    floating enable, move position mouse
+for_window [class="(?i)pavucontrol"]   floating enable
+for_window [class="(?i)rr_board"]      floating enable
+
+for_window [class="(?i)qbittorrent"]   floating enable
+
+for_window [title="(?i)emulator"]      floating enable
+for_window [title="(?i)lxappearance"]  floating enable
+
+for_window [title="(?i)pcmanfm"]      floating enable
+for_window [title="(?i)feh"]      floating enable
+
+assign [instance="newsbeuter"] $ws7
+assign [instance="ncmpcpp"]    $ws8
+
+################################## Modes #################################
+
+# Resize window
+set $mode_resize resize (h,j,k,l)
+bindsym $mod+r mode "$mode_resize"
+mode "$mode_resize" {
+        bindsym h resize shrink width  5 px or 5 ppt
+        bindsym j resize grow height   5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width    5 px or 5 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+
+# Choosing gap resizing mode (inner, outer)
+set $mode_gaps gaps (o,i,0,d)
+set $mode_gaps_outer outer gaps (+,-,0,d)
+set $mode_gaps_inner inner gaps (+,-,0,d)
+
+bindsym $mod+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+    bindsym o      mode "$mode_gaps_outer"
+    bindsym i      mode "$mode_gaps_inner"
+
+    bindsym 0      mode "default", exec --no-startup-id i3-msg "gaps inner current set 0" && i3-msg "gaps outer current set 0"
+    bindsym d      mode "default", exec --no-startup-id i3-msg "gaps inner current set $default_gaps_inner" && i3-msg "gaps outer current set $default_gaps_outer"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# Resizing inner gaps
+mode "$mode_gaps_inner" {
+    bindsym plus  gaps inner current plus 5
+    bindsym minus gaps inner current minus 5
+    bindsym 0     mode "default", gaps inner current set 0
+    bindsym d     mode "default", gaps inner current set $default_gaps_inner
+
+    bindsym Shift+plus  gaps inner all plus 5
+    bindsym Shift+minus gaps inner all minus 5
+    bindsym Shift+0     mode "default", gaps inner all set 0
+    bindsym Shift+d     mode "default", gaps inner all set $default_gaps_inner
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym q      mode "default"
+}
+
+# Resizing outer gaps
+mode "$mode_gaps_outer" {
+    bindsym plus  gaps outer current plus 5
+    bindsym minus gaps outer current minus 5
+    bindsym 0     mode "default", gaps outer current set 0
+    bindsym d     mode "default", gaps outer current set $default_gaps_outer
+
+    bindsym Shift+plus  gaps outer all plus 5
+    bindsym Shift+minus gaps outer all minus 5
+    bindsym Shift+0     mode "default", gaps outer all set 0
+    bindsym Shift+d     mode "default", gaps outer all set $default_gaps_outer
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym q      mode "default"
+}
+
+# Exit mode
+set $mode_exit Do you really want to exit i3? (y,n)
+bindsym $mod+shift+e mode "$mode_exit"
+
+mode "$mode_exit" {
+    bindsym y exec --no-startup-id i3-msg exit
+
+    bindsym n      mode "default"
+    bindsym Escape mode "default"
+}
+
+# Halt: lock, suspend, hibernate
+set $mode_halt halt (l,s,h)
+bindsym $mod+Escape mode "$mode_halt"
+
+mode "$mode_halt" {
+	bindsym l mode "default", exec --no-startup-id ~/scripts/halt.sh lock
+	bindsym s mode "default", exec --no-startup-id ~/scripts/halt.sh suspend
+	bindsym h mode "default", exec --no-startup-id ~/scripts/halt.sh hibernate
+
+	bindsym Escape mode "default"
+}
+
+################################ Other Blocks ##################################
+
+bar {
+	status_command i3blocks
+	position top
+	font pango: jmk neep, FontAwesome 9
+	tray_output primary
+	tray_padding 0
+	# strip_workspace_numbers yes
+	colors {
+		background $bg
+		statusline $fg
+
+	        # CLASS            BORDER       BACKGROUND   TEXT
+		focused_workspace  $bg          $bg          $magenta
+		inactive_workspace $bg          $bg          $fg
+		active_workspace   $bg          $bg          $fg
+		urgent_workspace   $bg          $darkred     $bg
+		binding_mode       $bg          $bg          $magenta
+    }
+}
+
+################################## Bindings ###################################
+# TODO: Move some shit to shxkd
+
+bindsym $mod+Return exec --no-startup-id $terminal
+bindsym $mod+Shift+Return exec --no-startup-id st -n __scratchpad
+
+bindsym $mod+Shift+w exec --no-startup-id $HOME/.config/i3/scripts/fullscreen_wrap.sh st -n __nmtui -e nmtui-connect
+
+bindsym $mod+Shift+v exec --no-startup-id "killall pavucontrol; $HOME/.config/i3/scripts/fullscreen_wrap.sh pavucontrol --name pavucontrol-bar"
+
+# Scratchpad
+bindsym $mod+minus move scratchpad
+bindsym $mod+plus scratchpad show
+
+bindsym $mod+q kill
+bindsym $mod+Shift+q exec xkill
+
+bindsym $mod+space exec --no-startup-id zsh -c 'rofi -show run -sort'
+
+# Change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# move focused workspace
+bindsym $mod+Control+h move workspace to output left
+bindsym $mod+Control+j move workspace to output down
+bindsym $mod+Control+k move workspace to output up
+bindsym $mod+Control+l move workspace to output right
+
+# toggle fullscreen
+bindsym $mod+f fullscreen toggle
+
+# rename workspace
+bindsym $mod+m exec --no-startup-id i3-input -F 'rename workspace to "%s"' -P 'New name for this workspace: '
+
+# Spliting
+bindsym $mod+v split h
+bindsym $mod+s split v
+bindsym $mod+e layout toggle split
+
+# Tabbed or stacked
+bindsym $mod+w layout stacking
+bindsym $mod+t layout tabbed
+
+# Floating modifier
+floating_modifier $mod
+
+# Focus toggle
+bindsym $mod+Shift+d focus mode_toggle
+
+# Modes
+bindsym $mod+Shift+s sticky   toggle
+bindsym $mod+Shift+f floating toggle
+
+# Child & parent
+bindsym $mod+p focus parent
+bindsym $mod+c focus child
+
+# switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+bindsym $mod+Tab workspace back_and_forth
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+Shift+Tab move container to workspace back_and_forth
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+bindsym XF86AudioLowerVolume exec --no-startup-id $HOME/scripts/volume.sh down 5
+bindsym XF86AudioRaiseVolume exec --no-startup-id $HOME/scripts/volume.sh up 5
+
+bindsym XF86AudioMute exec --no-startup-id $HOME/scripts/volume.sh toggle
+
+bindsym XF86AudioPlay exec --no-startup-id mpc toggle
+bindsym XF86AudioPrev exec --no-startup-id mpc prev
+bindsym XF86AudioNext exec --no-startup-id mpc next
+
+
+bindsym $mod+Shift+i exec --no-startup-id $HOME/scripts/kbd_layout_toggle.sh
+
+bindsym XF86MonBrightnessUp   exec --no-startup-id "xbacklight +10; pkill -RTMIN+2 i3blocks"
+bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -10; pkill -RTMIN+2 i3blocks"
+
+bindsym XF86KbdBrightnessUp   exec --no-startup-id "kbdlight up 10"
+bindsym XF86KbdBrightnessDown exec --no-startup-id "kbdlight down 10"

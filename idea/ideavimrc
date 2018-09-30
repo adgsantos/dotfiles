@@ -1,0 +1,7 @@
+source ~/.vimrc
+
+set surround
+
+nnoremap / /
+nnoremap ? ?
+

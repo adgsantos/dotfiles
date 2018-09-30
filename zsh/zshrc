@@ -1,0 +1,35 @@
+source-all () {
+	for f in $@; do
+		. "$f"
+	done
+}
+
+# Get grml if we do not have it installed already
+if [[ ! -f ~/.zsh/grml.zsh ]]; then
+	wget -O ~/.zsh/grml.zsh https://git.grml.org/f/grml-etc-core/etc/zsh/zshrc
+fi
+
+. ~/.zsh/grml.zsh
+
+# Set theme
+. ~/.zsh/themes/default.zsh
+source-all `find ~/.zsh/plugins -type f`
+
+fpath+=(~/.zsh/conda-zsh-completion)
+compinit conda
+zstyle ':completion::complete:*' use-cache 1
+
+if isdarwin; then
+	fpath+=(/usr/local/share/zsh-completions)
+	fpath+=(/usr/local/share/zsh/site-functions)
+fi
+
+source-all \
+	~/.zsh/env.zsh \
+	~/.zsh/history.zsh \
+	~/.zsh/functions.zsh \
+	~/.zsh/prompt.zsh \
+	~/.zsh/aliases.zsh \
+	~/.zsh/options.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

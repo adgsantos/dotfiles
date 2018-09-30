@@ -1,0 +1,30 @@
+hi clear
+
+hi Normal          font-family: Hack; min-height: 22px; font-weight: bold; background: #1f1f1f !important; color: #c0b18b !important;
+
+hi Hint            font-family: Hack; min-height: 22px; font-weight: bold; background: #1f1f1f !important; color: #c0b18b !important; border: 2px solid rgb(165,1,105); padding: 4px; border-radius: 3px; margin-left: -25px; line-height:1em;
+
+hi HintActive      font-family: Hack; min-height: 22px; font-weight: bold; background: #1f1f1f !important; color: #c0b18b !important; color: #c0b18b !important; background: #1f1f1f !important;
+hi HintElem        font-family: Hack; min-height: 22px; font-weight: bold; background: #1f1f1f !important; color: #c0b18b !important; color: #1f1f1f !important; background: #c0b18b !important;
+
+hi StatusLine      font-family: Hack; min-height: 22px; font-weight: bold; background: #1f1f1f !important; color: #c0b18b !important;
+hi CmdLine         font-family: Hack; background: #1f1f1f; color: #c0b18b; transition: all 0.15s;
+
+hi Indicator       font-family: Hack; font-weight:bold; color #535C5C;
+hi Function        font-family: Hack; font-weight:bold; color #535C5C;
+hi Tag             font-family: Hack; font-weight:bold; color #535C5C;
+
+hi ModeMsg         font-family: Hack; min-height: 22px; font-weight: bold; background: #1f1f1f !important; color: #c0b18b !important;
+hi MoreMsg         font-family: Hack; min-height: 22px; font-weight: bold; background: #1f1f1f !important; color: #c0b18b !important; color:green !important;
+hi Question        font-family: Hack; min-height: 22px; font-weight: bold; background: #1f1f1f !important; color: #c0b18b !important;
+
+hi ErrorMsg        font-family: Hack; min-height: 22px; font-weight: bold; background: #1f1f1f !important; color: #c0b18b !important; color:red !important; background: #1f1f1f !important;
+
+hi Title              color: #775759 !important;
+hi CompTitle          color: #775759 !important;
+hi CompTitle>*        color: #775759 !important; border-top: 2px solid #1f1f1f !important; border-bottom: 2px solid #1f1f1f !important; padding: 1px 0.5ex;
+hi CompItem[selected] color: #1f1f1f !important; background: #d17b49 !important;
+hi HelpInfoLabel      color: #775759 !important;
+hi NonText            color: #535C5C !important;
+hi CompDesc           color: #535C5C !important;
+hi URL                color: #535C5C !important;

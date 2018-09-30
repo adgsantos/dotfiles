@@ -1,0 +1,30 @@
+separator=false
+
+[volume]
+command=$HOME/scripts/volume.sh i3blocks; [[ -z "${BLOCK_BUTTON}" ]] || pavucontrol --name "pavucontrol-bar"
+interval=-1
+signal=1
+
+[brightness]
+label=  
+command=printf "%.0f" $(xbacklight -get)
+interval=-1
+signal=2
+
+[wireless]
+label=
+command=[[ -z "$(iwgetid -r)" ]] || echo "$(iwgetid -r)"
+interval=5
+
+[battery]
+label= 
+command=$HOME/scripts/battery.sh
+interval=10
+
+[time]
+label= 
+command=echo "`date +'%a %d %b'` <b>`date +'%T'`</b> "; [[ -z "${BLOCK_BUTTON}" ]] || gsimplecal &
+interval=1
+markup=pango
+separator_block_width=0
+

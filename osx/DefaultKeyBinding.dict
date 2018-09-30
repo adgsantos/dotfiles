@@ -1,0 +1,14 @@
+{
+	"^a" = "moveToBeginningOfLine:";
+    "^u" = "deleteToBeginningOfLine:";
+
+	"^e" = "moveToEndOfLine:";
+	"^k" = "deleteToEndOfLine:";
+
+	"~b" = "moveWordBackward:";
+    "^w" = "deleteWordBackward:";
+
+    "~f" = "moveWordForward:";
+    "~d"  = "deleteWordForward:";
+}
+
