@@ -16,7 +16,7 @@ Plug 'mtth/scratch.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdtree'
 Plug 'kovetskiy/sxhkd-vim'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': '/usr/local/bin/python3 ./install.py --clang-completer' }
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'lervag/vimtex', { 'for': 'tex' }
 
