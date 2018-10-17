@@ -15,14 +15,16 @@ fi
 . ~/.zsh/themes/default.zsh
 source-all `find ~/.zsh/plugins -type f`
 
-fpath+=(~/.zsh/conda-zsh-completion)
-compinit conda
+fpath=(~/.zsh/conda-zsh-completion $fpath)
 zstyle ':completion::complete:*' use-cache 1
 
 if isdarwin; then
-	fpath+=(/usr/local/share/zsh-completions)
-	fpath+=(/usr/local/share/zsh/site-functions)
+	fpath=(/usr/local/share/zsh-completions $fpath)
+	fpath=(/usr/local/share/zsh/site-functions $fpath)
 fi
+
+[[ -n `compaudit` ]] && compaudit | xargs chmod g-w
+rm -rf ~/.zcompdump; compinit
 
 source-all \
 	~/.zsh/env.zsh \
