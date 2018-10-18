@@ -11,6 +11,7 @@ popd > /dev/null
 makelink() {
 	target=${SCRIPTPATH}/$1
 	linkname=${HOME}/$2
+	mkdir -p `dirname $linkname`
 	if [[ -d "$linkname" ]]; then
 		rm -vrf "$linkname"
 	fi
