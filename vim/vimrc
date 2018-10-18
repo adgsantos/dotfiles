@@ -19,6 +19,7 @@ Plug 'kovetskiy/sxhkd-vim'
 Plug 'Valloric/YouCompleteMe', { 'do': '/usr/local/bin/python3 ./install.py --clang-completer' }
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'lervag/vimtex', { 'for': 'tex' }
+Plug 'vim-scripts/applescript.vim', { 'for': 'applescript' }
 
 call plug#end()
 
@@ -633,6 +634,13 @@ augroup END
 
 " }}}
 " FileTypes -------------------------------------------------------------- {{{
+
+" Applescript {{{
+augroup ft_applescript
+	au!
+	au BufEnter *.applescript setlocal ft=applescript
+augroup END
+" }}}
 
 " Cfg {{{
 augroup ft_cfg
