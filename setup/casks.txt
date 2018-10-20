@@ -1,8 +1,7 @@
 discord
 slack
-pokerstars
 miniconda
-torbrowser
+tor-browser
 easy-move-plus-resize
 spectacle
 whatsapp
