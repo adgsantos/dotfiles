@@ -20,6 +20,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': '/usr/local/bin/python3 ./install.py --cl
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'lervag/vimtex', { 'for': 'tex' }
 Plug 'vim-scripts/applescript.vim', { 'for': 'applescript' }
+Plug 'lepture/vim-jinja'
 
 call plug#end()
 
