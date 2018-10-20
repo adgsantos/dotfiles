@@ -6,7 +6,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'sjl/gundo.vim'
+Plug 'mbbill/undotree'
 Plug 'sjl/badwolf'
 Plug 'wellle/targets.vim'
 Plug 'tpope/vim-commentary'
@@ -451,11 +451,10 @@ nnoremap <silent><leader>O :FZF<cr>
 " }}}
 " Gundo {{{
 
-nnoremap <silent> <leader>U :GundoToggle<CR>
+nnoremap <silent> <leader>U :UndotreeToggle<CR>
 
-let g:gundo_preview_bottom = 1
-let g:gundo_tree_statusline = "Gundo"
-let g:gundo_preview_statusline = "Gundo Preview"
+let g:undotree_WindowLayout=2
+let g:undotree_SetFocusWhenToggle=1
 
 " }}}
 " NERDTree {{{
