@@ -20,3 +20,5 @@ android-platform-tools
 transmission
 mactex
 skim
+postman
+tunnelblick
