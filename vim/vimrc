@@ -483,20 +483,23 @@ augroup ps_nerdtree
 	au Filetype nerdtree setlocal nolist
 augroup END
 
+let g:NERDTreeChDirMode = 2
+let g:NERDTreeDirArrows = 1
+let g:NERDChristmasTree = 1
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeRespectWildIgnore = 1
-let g:NERDTreeMouseMode = 3
+let g:NERDTreeMouseMode = 2
 let g:NERDTreeMinimalUI = 1
 let NERDTreeIgnore = ['\~$', '.*\.pyc$', 'pip-log\.txt$', 'whoosh_index',
-                    \ 'xapian_index', '.*.pid', 'monitor.py', '.*-fixtures-.*.json',
-                    \ '.*\.o$', 'db.db', 'tags.bak', '.*\.pdf$', '.*\.mid$',
-                    \ '^tags$',
-                    \ '^__pycache__$',
-                    \ '^.*\.meta$',
-                    \ '^.*\.fasl$',
-                    \ '^.*\.dx64fsl$',
-                    \ '.*\.bcf$', '.*\.blg$', '.*\.fdb_latexmk$', '.*\.bbl$', '.*\.aux$', '.*\.run.xml$', '.*\.fls$',
-                    \ '.*\.midi$']
+			\ 'xapian_index', '.*.pid', 'monitor.py', '.*-fixtures-.*.json',
+			\ '.*\.o$', 'db.db', 'tags.bak', '.*\.pdf$', '.*\.mid$',
+			\ '^tags$',
+			\ '^__pycache__$',
+			\ '^.*\.meta$',
+			\ '^.*\.fasl$',
+			\ '^.*\.dx64fsl$',
+			\ '.*\.bcf$', '.*\.blg$', '.*\.fdb_latexmk$', '.*\.bbl$', '.*\.aux$', '.*\.run.xml$', '.*\.fls$',
+			\ '.*\.midi$']
 
 " }}}
 " Scratch {{{
@@ -574,6 +577,9 @@ inoremap <expr> <cr> pumvisible() ? "\<esc>a" : "\<cr>"
 "                                    <c-y><c-y> or <c-y><c-e>; both with no
 "                                    luck. Therefore, the savage solution is
 "                                    <esc>a -- which works suprisingly good.
+
+nnoremap <leader>j :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>j :YcmCompleter GoToDefinition<CR>
 
 " Fixing the fact that ycm breaks ctab.
 " inoremap <expr> <tab> pumvisible() ? "\<C-N>" : "<C-R>=InsertSmartTab()"
