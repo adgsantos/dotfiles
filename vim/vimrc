@@ -6,7 +6,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'sjl/gundo.vim'
+Plug 'mbbill/undotree'
 Plug 'sjl/badwolf'
 Plug 'wellle/targets.vim'
 Plug 'tpope/vim-commentary'
@@ -16,9 +16,12 @@ Plug 'mtth/scratch.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdtree'
 Plug 'kovetskiy/sxhkd-vim'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': '/usr/local/bin/python3 ./install.py --clang-completer' }
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'lervag/vimtex', { 'for': 'tex' }
+Plug 'vim-scripts/applescript.vim', { 'for': 'applescript' }
+Plug 'lepture/vim-jinja'
+Plug 'vim-airline/vim-airline'
 
 call plug#end()
 
@@ -449,11 +452,10 @@ nnoremap <silent><leader>O :FZF<cr>
 " }}}
 " Gundo {{{
 
-nnoremap <silent> <leader>U :GundoToggle<CR>
+nnoremap <silent> <leader>U :UndotreeToggle<CR>
 
-let g:gundo_preview_bottom = 1
-let g:gundo_tree_statusline = "Gundo"
-let g:gundo_preview_statusline = "Gundo Preview"
+let g:undotree_WindowLayout=2
+let g:undotree_SetFocusWhenToggle=1
 
 " }}}
 " NERDTree {{{
@@ -481,10 +483,23 @@ augroup ps_nerdtree
 	au Filetype nerdtree setlocal nolist
 augroup END
 
+let g:NERDTreeChDirMode = 2
+let g:NERDTreeDirArrows = 1
+let g:NERDChristmasTree = 1
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeRespectWildIgnore = 1
-let g:NERDTreeMouseMode = 3
+let g:NERDTreeMouseMode = 2
 let g:NERDTreeMinimalUI = 1
+let NERDTreeIgnore = ['\~$', '.*\.pyc$', 'pip-log\.txt$', 'whoosh_index',
+			\ 'xapian_index', '.*.pid', 'monitor.py', '.*-fixtures-.*.json',
+			\ '.*\.o$', 'db.db', 'tags.bak', '.*\.pdf$', '.*\.mid$',
+			\ '^tags$',
+			\ '^__pycache__$',
+			\ '^.*\.meta$',
+			\ '^.*\.fasl$',
+			\ '^.*\.dx64fsl$',
+			\ '.*\.bcf$', '.*\.blg$', '.*\.fdb_latexmk$', '.*\.bbl$', '.*\.aux$', '.*\.run.xml$', '.*\.fls$',
+			\ '.*\.midi$']
 
 " }}}
 " Scratch {{{
@@ -563,6 +578,9 @@ inoremap <expr> <cr> pumvisible() ? "\<esc>a" : "\<cr>"
 "                                    luck. Therefore, the savage solution is
 "                                    <esc>a -- which works suprisingly good.
 
+nnoremap <leader>j :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>j :YcmCompleter GoToDefinition<CR>
+
 " Fixing the fact that ycm breaks ctab.
 " inoremap <expr> <tab> pumvisible() ? "\<C-N>" : "<C-R>=InsertSmartTab()"
 
@@ -633,6 +651,13 @@ augroup END
 
 " }}}
 " FileTypes -------------------------------------------------------------- {{{
+
+" Applescript {{{
+augroup ft_applescript
+	au!
+	au BufEnter *.applescript setlocal ft=applescript
+augroup END
+" }}}
 
 " Cfg {{{
 augroup ft_cfg

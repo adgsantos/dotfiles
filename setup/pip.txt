@@ -1,3 +1,4 @@
 maybe
 Pillow
 qrcode
+neovim

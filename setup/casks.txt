@@ -1,8 +1,7 @@
 discord
 slack
-pokerstars
 miniconda
-torbrowser
+tor-browser
 easy-move-plus-resize
 spectacle
 whatsapp
@@ -21,3 +20,5 @@ android-platform-tools
 transmission
 mactex
 skim
+postman
+tunnelblick
