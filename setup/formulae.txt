@@ -22,3 +22,4 @@ cmake
 transmission
 pass
 expect
+p7zip
