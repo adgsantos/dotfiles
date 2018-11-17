@@ -108,3 +108,5 @@ makelink pentadactyl/pentadactylrc .pentadactylrc
 makelink vimperator                .vimperator
 makelink vimperator/vimperatorrc   .vimperatorrc
 
+makelink jupyter/custom            .jupyter/custom
+

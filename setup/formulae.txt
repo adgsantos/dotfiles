@@ -23,4 +23,5 @@ transmission
 pass
 expect
 p7zip
+rlwrap
 ag

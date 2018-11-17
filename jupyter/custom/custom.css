@@ -1,0 +1,4 @@
+.CodeMirror pre, .CodeMirror-dialog, .CodeMirror-dialog .CodeMirror-search-field, .terminal-app .terminal {
+    font-family: Menlo;
+    font-size: 11pt;
+}
