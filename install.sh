@@ -52,12 +52,6 @@ else
 
 	makelink newsbeuter       .newsbeuter
 
-	makelink mutt             .mutt
-	makelink mutt/muttrc      .muttrc
-
-	makelink msmtp            .msmtp
-	makelink msmtp/msmtprc    .msmtprc
-
 	makelink X/xinitrc        .xinitrc
 	makelink X/xprofile       .xprofile
 	makelink X/xsession       .xsession
@@ -68,10 +62,6 @@ else
 	makelink X/Xresources.d             .Xresources.d
 	makelink X/Xresources.d/Xresources  .Xresources
 
-	makelink offlineimap                .offlineimap
-	makelink offlineimap/offlineimaprc  .offlineimaprc
-	makelink offlineimap/offlineimap.py .offlineimap.py
-
 	makelink mpd-notification/mpdnrc    .config/mpd-notification.conf
 fi
 
@@ -79,17 +69,12 @@ fi
 makelink git/gitconfig    .gitconfig
 makelink git/gitignore    .gitignore
 
-makelink hg/hgrc          .hgrc
-makelink hg/hgignore      .hgignore
-
 makelink idea             .idea
 makelink idea/ideavimrc   .ideavimrc
 
 makelink zsh              .zsh
 makelink zsh/zshrc        .zshrc
 makelink zsh/zprofile     .zprofile
-
-makelink wallpapers       .wallpapers
 
 makelink alacritty        .config/alacritty
 
