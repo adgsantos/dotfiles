@@ -93,6 +93,7 @@ makelink wallpapers       .wallpapers
 
 makelink alacritty        .config/alacritty
 
+makelink tmux             .tmux
 makelink tmux/tmux.conf   .tmux.conf
 
 makelink vim                       .config/nvim
