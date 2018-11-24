@@ -714,6 +714,12 @@ augroup ft_sh
 	au BufNewFile,BufRead *bash* setlocal ft=sh
 augroup END
 " }}}
+" Tmux {{{
+augroup ft_tmux
+	au!
+	au FileType tmux setlocal tw=0
+augroup END
+" }}}
 " Zsh {{{
 
 augroup ft_zsh
