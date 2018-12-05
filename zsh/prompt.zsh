@@ -1,27 +1,12 @@
-# When using grml, this is needed to setup prompt statically.
-prompt off
-
-# dcat's prompt
-_lprompt() {
-	RET=$?
-	case $RET in
-		0|130)
-			COL="$PROMPT_FG"
-			;;
-			127) # Command not found
-			COL="$PROMPT_ERR_FG"
-			;;
-		*)
-			COL="$PROMPT_FG"
-			EXTRA="[${PROMPT_ERR_FG}${RET}${RESET_COLOR}] "
-			;;
-	esac
-
-	P="${COL}──── ${RESET_COLOR} "
-
-	echo -n "${EXTRA}${P}"
+# https://gist.github.com/Cadair/78da7930c6dafeb1003a
+# Anaconda
+function conda_prompt () {
+    if [ -n "${CONDA_DEFAULT_ENV+1}" ]; then
+        REPLY=${CONDA_DEFAULT_ENV+(${CONDA_DEFAULT_ENV:t}) }
+    elif [ -n "${CONDA_ON+1}" ]; then
+        REPLY="(miniconda) "
+    fi
 }
-
-setopt PROMPT_SUBST
-PROMPT="\$(_lprompt)"
-RPROMPT='%~'
+grml_theme_add_token conda -f conda_prompt '%B%F{white}' '%f%b'
+zstyle ':prompt:grml:left:setup' items rc conda virtual-env change-root \
+                                               user at host path vcs percent
