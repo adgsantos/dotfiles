@@ -7,11 +7,17 @@ popd > /dev/null
 
 if [[ `uname -s` == 'Darwin' ]]; then
 
+	# TODO:
+	# Call install.sh
+	# osx.sh
+	# zsh, etc etc
+
 	# Install brew
 	if [[ -z `which brew` ]]; then
 		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	fi
 
+	brew tap homebrew/cask-fonts
 	brew cask install `cat ${DIR}/casks.txt`
 
 	brew install `cat ${DIR}/formulae.txt`
