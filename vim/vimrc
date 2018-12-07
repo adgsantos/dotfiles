@@ -22,6 +22,7 @@ Plug 'lervag/vimtex', { 'for': 'tex' }
 Plug 'vim-scripts/applescript.vim', { 'for': 'applescript' }
 Plug 'lepture/vim-jinja'
 Plug 'vim-airline/vim-airline'
+Plug 'tmux-plugins/vim-tmux'
 
 call plug#end()
 
