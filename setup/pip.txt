@@ -2,3 +2,4 @@ maybe
 Pillow
 qrcode
 neovim
+tqdm

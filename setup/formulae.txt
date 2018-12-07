@@ -25,3 +25,4 @@ expect
 p7zip
 rlwrap
 ag
+unrar

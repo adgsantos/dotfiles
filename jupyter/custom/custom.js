@@ -13,5 +13,8 @@ require([
 	CodeMirror.Vim.map("H", "0");
 	CodeMirror.Vim.map("L", "$");
 	CodeMirror.Vim.map("v", "<C-v>", "normal");
+	CodeMirror.Vim.map("Y", "y$");
+
+	CodeMirror.Vim.map("<cr>", "mzo<esc>`z");
 
 });
