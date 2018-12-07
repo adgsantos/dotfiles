@@ -22,6 +22,7 @@ Plug 'lervag/vimtex', { 'for': 'tex' }
 Plug 'vim-scripts/applescript.vim', { 'for': 'applescript' }
 Plug 'lepture/vim-jinja'
 Plug 'vim-airline/vim-airline'
+Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
 
 call plug#end()
 
@@ -579,7 +580,7 @@ inoremap <expr> <cr> pumvisible() ? "\<esc>a" : "\<cr>"
 "                                    <esc>a -- which works suprisingly good.
 
 nnoremap <leader>j :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>j :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>J :YcmCompleter GoToDefinition<CR>
 
 " Fixing the fact that ycm breaks ctab.
 " inoremap <expr> <tab> pumvisible() ? "\<C-N>" : "<C-R>=InsertSmartTab()"
@@ -648,7 +649,11 @@ augroup plug_tex
 augroup END
 
 " }}}
-
+" SimpylFold {{{
+let g:SimpylFold_docstring_preview = 0
+let g:SimpylFold_fold_docstring	= 1
+let g:SimpylFold_fold_import = 1
+" }}}
 " }}}
 " FileTypes -------------------------------------------------------------- {{{
 
