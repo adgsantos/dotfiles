@@ -15,8 +15,6 @@ fi
 . ~/.zsh/themes/default.zsh
 source-all `find ~/.zsh/plugins -type f`
 
-. ~/.zsh/macOS-zsh-completions/macOS-zsh-completions.plugin.zsh
-
 fpath=(~/.zsh/conda-zsh-completion $fpath)
 zstyle ':completion::complete:*' use-cache 1
 
