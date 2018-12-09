@@ -1,15 +1,15 @@
 [submodule "zsh/conda-zsh-completion"]
 	path = zsh/conda-zsh-completion
 	url = https://github.com/esc/conda-zsh-completion
-[submodule "tmux/.tmux/plugins/tpm"]
-	path = tmux/.tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
-[submodule "tmux/.tmux/plugins/tmux-prefix-highlight"]
-	path = tmux/.tmux/plugins/tmux-prefix-highlight
-	url = https://github.com/tmux-plugins/tmux-prefix-highlight
-[submodule "tmux/.tmux/plugins/tmux-cpu"]
-	path = tmux/.tmux/plugins/tmux-cpu
-	url = https://github.com/tmux-plugins/tmux-cpu
 [submodule "zsh/macOS-zsh-completions"]
 	path = zsh/macOS-zsh-completions
 	url = https://github.com/zchee/macOS-zsh-completions
+[submodule "tmux/plugins/tmux-prefix-highlight"]
+	path = tmux/plugins/tmux-prefix-highlight
+	url = https://github.com/tmux-plugins/tmux-prefix-highlight
+[submodule "tmux/plugins/tpm"]
+	path = tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
+[submodule "tmux/plugins/tmux-cpu"]
+	path = tmux/plugins/tmux-cpu
+	url = https://github.com/tmux-plugins/tmux-cpu
