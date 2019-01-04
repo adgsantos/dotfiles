@@ -129,7 +129,8 @@ def FlagsForFile( filename, **kwargs ):
     'do_cache': True
   }
 
-def Settings( **kwargs ):
-  return {
-    'interpreter_path': os.path.join(os.environ.get('CONDA_PREFIX', os.path.abspath(os.sep)), 'bin', 'python3')
-  }
+if os.environ.get('CONDA_PREFIX'):
+    def Settings( **kwargs ):
+      return {
+        'interpreter_path': os.path.join(os.environ.get('CONDA_PREFIX', os.path.abspath(os.sep)), 'bin', 'python3')
+      }
