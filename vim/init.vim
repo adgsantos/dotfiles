@@ -1,1 +1,1 @@
-/Users/andresantos/config/vim/vimrc
+/Users/ags/config/vim/vimrc
