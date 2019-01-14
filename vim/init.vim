@@ -1,1 +1,0 @@
-/Users/ags/config/vim/vimrc
