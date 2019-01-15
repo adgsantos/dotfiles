@@ -26,3 +26,4 @@ p7zip
 rlwrap
 ag
 unrar
+coreutils
