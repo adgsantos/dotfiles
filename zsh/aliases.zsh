@@ -74,6 +74,16 @@ fi
 
 if [[ `uname -s` == 'Darwin' ]]; then
 	alias screensaver='/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine'
+
+
+	function o() {
+		if [ -z $1 ]; then
+			open .
+		else
+			open $*
+		fi
+		return $?
+	}
 fi
 
 # Clean up
