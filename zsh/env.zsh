@@ -7,6 +7,8 @@ if isdarwin; then
 	PATH=${HOME}/bin/miniconda3/bin:${PATH}
 fi
 
+PATH=${HOME}/scripts:${PATH}
+
 export PATH
 
 export XDG_CONFIG_HOME="${HOME}/.config"
