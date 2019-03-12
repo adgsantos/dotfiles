@@ -22,3 +22,5 @@ mactex
 skim
 postman
 tunnelblick
+nteract
+soundcleod
