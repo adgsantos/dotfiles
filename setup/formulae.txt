@@ -27,3 +27,5 @@ rlwrap
 ag
 unrar
 coreutils
+pv
+pipenv

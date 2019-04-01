@@ -24,3 +24,4 @@ postman
 tunnelblick
 nteract
 soundcleod
+kobo
