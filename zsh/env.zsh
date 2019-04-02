@@ -2,7 +2,9 @@ PATH="${HOME}/bin:$PATH"
 
 if isdarwin; then
 	PATH=/usr/local/miniconda3/bin:"$PATH"
-	export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+	if [[ -n `which java` ]]; then
+		export JAVA_HOME=`/usr/libexec/java_home -v`
+	fi
  else
 	PATH=${HOME}/bin/miniconda3/bin:${PATH}
 fi
