@@ -5,18 +5,14 @@ tor-browser
 easy-move-plus-resize
 spectacle
 whatsapp
-evernote
 dropbox
 vlc
 iterm2
-java8
 google-chrome
-intellij-idea-ce
 pycharm
 magicprefs
 spotify
 skype
-android-platform-tools
 transmission
 mactex
 skim
@@ -25,3 +21,5 @@ tunnelblick
 nteract
 soundcleod
 kobo
+notion
+alacritty

@@ -13,13 +13,11 @@ torsocks
 pdfgrep
 caskroom/cask/xquartz
 diff-pdf
-maven
 fzf
 npm
 youtube-dl
 ffmpeg
 cmake
-transmission
 pass
 expect
 p7zip
