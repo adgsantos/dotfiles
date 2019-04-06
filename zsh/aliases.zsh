@@ -1,7 +1,7 @@
 alias rmd='rm -d'
 alias md='mkdir -p'
 
-[[ -x `which ipython` ]] && alias py=ipython
+[[ -x `which ipython` ]] && alias ipy=ipython
 [[ -x `which python` ]] && alias py=python
 
 # Changing/making/removing directory
