@@ -1,4 +1,3 @@
-discord
 slack
 miniconda
 tor-browser
@@ -10,17 +9,15 @@ vlc
 iterm2
 google-chrome
 pycharm
-magicprefs
 spotify
 skype
-transmission
 mactex
 skim
 postman
-tunnelblick
 nteract
 soundcleod
 kobo
 notion
 alacritty
 karabiner-elements
+java

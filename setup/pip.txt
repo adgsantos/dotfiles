@@ -3,3 +3,4 @@ Pillow
 qrcode
 neovim
 tqdm
+pexpect
