@@ -1,6 +1,6 @@
 defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain InitialKeyRepeat -int 9
-
+defaults write .GlobalPreferences com.apple.mouse.scaling -1
 
 defaults write com.apple.dock expose-animation-duration -float 0.1
 
