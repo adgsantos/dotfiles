@@ -193,6 +193,8 @@ nnoremap G Gzz
 nnoremap n nzz
 nnoremap N Nzz
 
+nnoremap <c-[> <c-[> zz
+
 nnoremap <c-f> <c-f>zz
 nnoremap <c-b> <c-b>zz
 nnoremap <c-d> <c-d>zz
