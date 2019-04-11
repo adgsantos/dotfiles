@@ -36,9 +36,9 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 # Disable the ‚ÄúAre you sure you want to open this application?‚Äù dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-sudo scutil --set ComputerName "jungleai"
-sudo scutil --set HostName "jungleai"
-sudo scutil --set LocalHostName "jungleai"
+sudo scutil --set ComputerName "goliath"
+sudo scutil --set HostName "goliath"
+sudo scutil --set LocalHostName "goliath"
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "jungleai"
 
 defaults write com.apple.finder QuitMenuItem -bool true
