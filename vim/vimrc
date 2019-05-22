@@ -16,9 +16,7 @@ Plug 'mtth/scratch.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdtree'
 Plug 'kovetskiy/sxhkd-vim'
-"Should be installed manually
-"Plug 'Valloric/YouCompleteMe', { 'do': '/usr/local/bin/python3 ./install.py --clang-completer' }
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+Plug 'Valloric/YouCompleteMe', { 'do': '/usr/local/bin/python3 ./install.py --clang-completer' }
 Plug 'lervag/vimtex', { 'for': 'tex' }
 Plug 'vim-scripts/applescript.vim', { 'for': 'applescript' }
 Plug 'lepture/vim-jinja'
@@ -69,8 +67,7 @@ if has ('nvim')
 	endfunction
 
 	" Set python vars
-	let g:python_host_prog='/usr/bin/python2.7'
-	let g:python3_host_prog='/usr/local/bin/python3'
+	let g:python3_host_prog='/usr/local/miniconda3/bin/python'
 	"let g:python3_host_prog ='/usr/local/miniconda3/bin/python'
 
 	"TODO: Linux vs OSX
@@ -571,6 +568,8 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_python_binary_path = '/usr/local/bin/python3'
 let g:ycm_server_python_interpreter = '/usr/local/bin/python3'
 
+let g:ycm_key_invoke_completion = '<C-Space>'
+
 " GoTo commands cause a vsplit to be open
 let g:ycm_goto_buffer_command = 'same-buffer'
 
@@ -623,6 +622,7 @@ nmap ga <Plug>(EasyAlign)
 " Tex {{{
 
 
+let g:vimtex_view_method='skim'
 function! Plug_tex_cfg()
 	" Configure semantic completion
 	if !exists('g:ycm_semantic_triggers')
@@ -638,14 +638,6 @@ function! Plug_tex_cfg()
 	set foldmethod=expr
 	set foldexpr=vimtex#fold#level(v:lnum)
 endfunction
-
-" TODO: For some reason this doesn't work inside the autocommand for
-" vim-latex-preview
-if has('mac')
-	let g:livepreview_previewer='open -a Skim'
-else
-	let g:livepreview_previewer='evince'
-endif
 
 augroup plug_tex
 	au!
