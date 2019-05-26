@@ -21,7 +21,9 @@ Plug 'lervag/vimtex', { 'for': 'tex' }
 Plug 'vim-scripts/applescript.vim', { 'for': 'applescript' }
 Plug 'lepture/vim-jinja'
 Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-obsession'
 Plug 'tmux-plugins/vim-tmux'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
 
 call plug#end()
