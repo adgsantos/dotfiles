@@ -27,3 +27,4 @@ unrar
 coreutils
 pv
 pipenv
+watch

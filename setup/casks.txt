@@ -21,3 +21,4 @@ notion
 alacritty
 karabiner-elements
 java
+homebrew/cask-drivers/logitech-options
