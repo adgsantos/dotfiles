@@ -15,7 +15,12 @@ fi
 . ~/.zsh/themes/default.zsh
 source-all `find ~/.zsh/plugins -type f`
 
-fpath=(~/.zsh/conda-zsh-completion $fpath)
+if [[ ! -d ~/.zsh/completion ]]; then
+	mkdir -p ~/.zsh/completion
+	curl -L https://raw.githubusercontent.com/docker/compose/1.24.0/contrib/completion/zsh/_docker-compose > ~/.zsh/completion/_docker-compose
+fi
+
+fpath=(~/.zsh/completion ~/.zsh/conda-zsh-completion $fpath)
 zstyle ':completion::complete:*' use-cache 1
 
 if isdarwin; then
