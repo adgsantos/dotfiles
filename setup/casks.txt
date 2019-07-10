@@ -1,3 +1,4 @@
+alacritty
 slack
 miniconda
 tor-browser
@@ -11,7 +12,6 @@ google-chrome
 pycharm
 spotify
 skype
-mactex
 skim
 postman
 nteract
@@ -23,3 +23,5 @@ karabiner-elements
 java
 homebrew/cask-drivers/logitech-options
 docker
+karabiner-elements
+mactex
