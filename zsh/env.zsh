@@ -25,3 +25,5 @@ function set_ed() {
 
 set_ed vi vim nvim
 
+export LC_ALL=en_US.UTF-8
+
