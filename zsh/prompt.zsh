@@ -7,6 +7,12 @@ function conda_prompt () {
         REPLY="(miniconda) "
     fi
 }
+
+function custom_time () {
+	REPLY="[`date +'%H:%M:%S'`] "
+}
+
+grml_theme_add_token c_time -f custom_time '%B%F{white}' '%f%b'
 grml_theme_add_token conda -f conda_prompt '%B%F{white}' '%f%b'
-zstyle ':prompt:grml:left:setup' items rc conda virtual-env change-root \
-                                               user at host path vcs percent
+zstyle ':prompt:grml:left:setup' items c_time rc conda virtual-env change-root \
+							     				 user at host path vcs percent
