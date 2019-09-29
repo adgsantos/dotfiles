@@ -89,3 +89,6 @@ fi
 # Clean up
 unset VCS_FOLDERS
 unfunction grep-flag-available
+
+# Jumps to repo root
+alias gr='git rev-parse --show-toplevel > /dev/null && cd $(git rev-parse --show-toplevel)'
