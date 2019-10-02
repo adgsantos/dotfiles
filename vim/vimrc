@@ -319,8 +319,8 @@ noremap ' `
 nnoremap ` <C-^>
 
 " Easier clipboard management
-nnoremap <leader>p "+p
-nnoremap <leader>y "+y
+noremap <leader>p "+p
+noremap <leader>y "+y
 
 " Cycling/Swapping between buffers
 nnoremap <c-n> :bn<cr>
