@@ -28,3 +28,5 @@ coreutils
 pv
 pipenv
 watch
+jq
+tldr
