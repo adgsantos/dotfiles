@@ -151,6 +151,8 @@ menuentry Arch {
     options "rw root=/dev/sdXY resume=/dev/sdXW" # Y - root; W - swap
 }
 ```
+### Add this at the end of the file:
+`include themes/rEFInd-minimal/theme.conf`
 
 ### Modify /etc/mkinitcpio.conf
 add `resume` in `HOOKS` after `udev` like so:
