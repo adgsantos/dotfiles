@@ -164,19 +164,28 @@ rebuild it:
 
 ### Pos-installation configuration
 
-### Install yaourt
+### Enable network manager
 ```sh
-yaourt -S --noconfirm \
-	linux-headers \
-	dialog \
-	wpa_supplicant \
-	networkmanager
-
 systemctl start NetworkManager.service
 systemctl enable NetworkManager.service
 ```
 
+### Install yay
+```sh
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+```
+
+```sh
+yay -S --noconfirm \
+	linux-headers \
+	dialog \
+	wpa_supplicant \
+	networkmanager
+```
+
 ### Install broadcom drivers
 ```sh
-yaourt -S --noconfirm broadcom-wl-dkms
+yay -S --noconfirm broadcom-wl-dkms
 ```
