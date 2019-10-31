@@ -22,7 +22,7 @@ swapon /dev/sda2
 
 ### Mount the partitions
 ```sh
-mount /dev/sdXY # where X is the disk where the partitions are and Y is the root device no
+mount /dev/sdXY /mnt # where X is the disk where the partitions are and Y is the root device no
 mkdir /mnt/{home,boot}
 mount /dev/sdXZ /mnt/boot
 mount /dev/sdXW /mnt/home
@@ -37,7 +37,7 @@ systemctl start dhcpcd@<INTERFACE_NAME> # connect to it
 
 ### Install base system
 ```sh
-pacstrap -i /mnt base base-devel
+pacstrap -i /mnt base base-devel linux linux-firmware
 ```
 
 ### Generate fstab file
@@ -55,7 +55,7 @@ arch-chroot /mnt
 
 #### Locale
 ```sh
-vi /etc/locale.gen # and uncomment the line which contains the desired locale
+vim /etc/locale.gen # and uncomment the line which contains the desired locale
 logale-gen
 echo LANG=en_US.UTF-8 > /etc/locale.conf
 export LANG=en_US.UTF-8
@@ -72,7 +72,7 @@ echo <HOSTNAME> > /etc/hostname
 
 #### Pacman
 ```sh
-vi /etc/pacman.conf
+vim /etc/pacman.conf
 ```
 Uncomment:
 ```
@@ -116,9 +116,14 @@ Add below that line:
 Defaults rootpw
 ```
 
-### Intel-ucode
+### efibootmgr
 ```sh
-pacman -S efibootmgr intel-ucode
+pacman -S efibootmgr
+```
+
+### Intel ucode
+```sh
+pacman -S intel-ucode
 ```
 
 ### Download refind
@@ -128,18 +133,26 @@ unzip refind.zip
 ./refind-*/refind-install
 ```
 
+### Install refind themes
+```sh
+cd /boot/EFI/BOOT
+mkdir -p themes
+cd themes
+git clone https://github.com/EvanPurkhiser/rEFInd-minimal
+```
+
 ### Create an entry with the following content:
 ```sh
 menuentry Arch {
     icon /EFI/refind/themes/rEFInd-minimal/icons/os_arch.png
     loader /vmlinuz-linux
-    initrd /intel-ucode.img
+    initrd /intel-ucode.img # If it was installed
     initrd /initramfs-linux.img
     options "rw root=/dev/sdXY resume=/dev/sdXW" # Y - root; W - swap
 }
 ```
 
-### Modify initramfs
+### Modify /etc/mkinitcpio.conf
 add `resume` in `HOOKS` after `udev` like so:
 `HOOKS="base udev **resume** autodetect modconf block filesystems keyboard fsck"`
 
