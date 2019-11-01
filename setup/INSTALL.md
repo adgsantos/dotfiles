@@ -74,8 +74,16 @@ echo <HOSTNAME> > /etc/hostname
 ```sh
 vim /etc/pacman.conf
 ```
+
 Uncomment:
 ```
+# In the misc section
+Color
+TotalDownload
+CheckSpace
+VerbosePkgLists
+
+# In the repositories section
 [multilib]
 Include = /etc/pacman.d/mirrorlist
 ```
