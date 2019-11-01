@@ -26,6 +26,8 @@ mount /dev/sdXY /mnt # where X is the disk where the partitions are and Y is the
 mkdir /mnt/{home,boot}
 mount /dev/sdXZ /mnt/boot
 mount /dev/sdXW /mnt/home
+mkdir /storage
+mount /dev/sdJK /storage
 ```
 
 # 2. Installing base system
