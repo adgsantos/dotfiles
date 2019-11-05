@@ -261,9 +261,6 @@ set wildignore+=tags
 let mapleader = ","
 let maplocalleader = "\\"
 
-" Close tab
-nnoremap d. :tabclose<cr>
-
 " Move accordingly to screen line and not file line
 nnoremap j gj
 nnoremap k gk
