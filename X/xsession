@@ -1,9 +1,8 @@
 #!/bin/bash
 source ~/.xprofile
 
-if [[ -n `xrandr | grep " connected" | grep 'HDMI2'` ]]; then
-	~/scripts/extend.sh &
-fi
+xrandr --output HDMI-0 --right-of DP-0
+xrandr --output DP-0 --primary
 
 # Some programs
 mpd &
