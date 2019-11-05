@@ -7,7 +7,6 @@ xrandr --output DP-0 --primary
 # Some programs
 mpd &
 dunst &
-xbacklight -set 20% &
 
 hsetroot -fill ~/.wallpaper
 unclutter -b --timeout 3 &
