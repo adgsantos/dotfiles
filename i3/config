@@ -1,7 +1,7 @@
 ################################## Options #################################
-set $terminal alacritty -e tmux
-set $editor   nvim
-set $mod      Mod4
+set $terminal alacritty --config-file ~/.config/alacritty/alacritty_linux.yml -e=zsh
+set $editor nvim
+set $mod Mod4
 
 set $ws1  1
 set $ws2  2
@@ -88,7 +88,8 @@ for_window [class="(?i)gsimplecal"]    floating enable, move position mouse
 for_window [class="(?i)pavucontrol"]   floating enable
 for_window [class="(?i)rr_board"]      floating enable
 
-for_window [class="(?i)qbittorrent"]   floating enable
+for_window [class="(?i)insomnia"]      floating enable
+for_window [class="(?i)postman"]       floating enable
 
 for_window [title="(?i)emulator"]      floating enable
 for_window [title="(?i)lxappearance"]  floating enable
@@ -103,16 +104,17 @@ assign [instance="ncmpcpp"]    $ws8
 
 # Resize window
 set $mode_resize resize (h,j,k,l)
+
 bindsym $mod+r mode "$mode_resize"
 mode "$mode_resize" {
-        bindsym h resize shrink width  5 px or 5 ppt
-        bindsym j resize grow height   5 px or 5 ppt
-        bindsym k resize shrink height 5 px or 5 ppt
-        bindsym l resize grow width    5 px or 5 ppt
+	bindsym h resize shrink width  5 px or 5 ppt
+	bindsym j resize grow height   5 px or 5 ppt
+	bindsym k resize shrink height 5 px or 5 ppt
+	bindsym l resize grow width    5 px or 5 ppt
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+	# back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
 }
 
 
@@ -122,61 +124,60 @@ set $mode_gaps_outer outer gaps (+,-,0,d)
 set $mode_gaps_inner inner gaps (+,-,0,d)
 
 bindsym $mod+g mode "$mode_gaps"
-
 mode "$mode_gaps" {
-    bindsym o      mode "$mode_gaps_outer"
-    bindsym i      mode "$mode_gaps_inner"
+	bindsym o      mode "$mode_gaps_outer"
+	bindsym i      mode "$mode_gaps_inner"
 
-    bindsym 0      mode "default", exec --no-startup-id i3-msg "gaps inner current set 0" && i3-msg "gaps outer current set 0"
-    bindsym d      mode "default", exec --no-startup-id i3-msg "gaps inner current set $default_gaps_inner" && i3-msg "gaps outer current set $default_gaps_outer"
+	bindsym 0      mode "default", exec --no-startup-id i3-msg "gaps inner current set 0" && i3-msg "gaps outer current set 0"
+	bindsym d      mode "default", exec --no-startup-id i3-msg "gaps inner current set $default_gaps_inner" && i3-msg "gaps outer current set $default_gaps_outer"
 
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
 }
 
 # Resizing inner gaps
 mode "$mode_gaps_inner" {
-    bindsym plus  gaps inner current plus 5
-    bindsym minus gaps inner current minus 5
-    bindsym 0     mode "default", gaps inner current set 0
-    bindsym d     mode "default", gaps inner current set $default_gaps_inner
+	bindsym plus  gaps inner current plus 5
+	bindsym minus gaps inner current minus 5
+	bindsym 0     mode "default", gaps inner current set 0
+	bindsym d     mode "default", gaps inner current set $default_gaps_inner
 
-    bindsym Shift+plus  gaps inner all plus 5
-    bindsym Shift+minus gaps inner all minus 5
-    bindsym Shift+0     mode "default", gaps inner all set 0
-    bindsym Shift+d     mode "default", gaps inner all set $default_gaps_inner
+	bindsym Shift+plus  gaps inner all plus 5
+	bindsym Shift+minus gaps inner all minus 5
+	bindsym Shift+0     mode "default", gaps inner all set 0
+	bindsym Shift+d     mode "default", gaps inner all set $default_gaps_inner
 
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym q      mode "default"
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym q      mode "default"
 }
 
 # Resizing outer gaps
 mode "$mode_gaps_outer" {
-    bindsym plus  gaps outer current plus 5
-    bindsym minus gaps outer current minus 5
-    bindsym 0     mode "default", gaps outer current set 0
-    bindsym d     mode "default", gaps outer current set $default_gaps_outer
+	bindsym plus  gaps outer current plus 5
+	bindsym minus gaps outer current minus 5
+	bindsym 0     mode "default", gaps outer current set 0
+	bindsym d     mode "default", gaps outer current set $default_gaps_outer
 
-    bindsym Shift+plus  gaps outer all plus 5
-    bindsym Shift+minus gaps outer all minus 5
-    bindsym Shift+0     mode "default", gaps outer all set 0
-    bindsym Shift+d     mode "default", gaps outer all set $default_gaps_outer
+	bindsym Shift+plus  gaps outer all plus 5
+	bindsym Shift+minus gaps outer all minus 5
+	bindsym Shift+0     mode "default", gaps outer all set 0
+	bindsym Shift+d     mode "default", gaps outer all set $default_gaps_outer
 
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym q      mode "default"
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym q      mode "default"
 }
 
 # Exit mode
 set $mode_exit Do you really want to exit i3? (y,n)
+
 bindsym $mod+shift+e mode "$mode_exit"
-
 mode "$mode_exit" {
-    bindsym y exec --no-startup-id i3-msg exit
+	bindsym y exec --no-startup-id i3-msg exit
 
-    bindsym n      mode "default"
-    bindsym Escape mode "default"
+	bindsym n      mode "default"
+	bindsym Escape mode "default"
 }
 
 # Halt: lock, suspend, hibernate
@@ -184,9 +185,9 @@ set $mode_halt halt (l,s,h)
 bindsym $mod+Escape mode "$mode_halt"
 
 mode "$mode_halt" {
-	bindsym l mode "default", exec --no-startup-id ~/scripts/halt.sh lock
-	bindsym s mode "default", exec --no-startup-id ~/scripts/halt.sh suspend
-	bindsym h mode "default", exec --no-startup-id ~/scripts/halt.sh hibernate
+	bindsym l mode "default", exec --no-startup-id ~/.config/i3/scripts/halt.sh lock
+		bindsym s mode "default", exec --no-startup-id ~/.config/i3/scripts/halt.sh suspend
+	bindsym h mode "default", exec --no-startup-id ~/.config/i3/scripts/halt.sh hibernate
 
 	bindsym Escape mode "default"
 }
@@ -196,7 +197,7 @@ mode "$mode_halt" {
 bar {
 	status_command i3blocks
 	position top
-	font pango: jmk neep, FontAwesome 9
+	font pango: hack
 	tray_output primary
 	tray_padding 0
 	# strip_workspace_numbers yes
@@ -204,20 +205,20 @@ bar {
 		background $bg
 		statusline $fg
 
-	        # CLASS            BORDER       BACKGROUND   TEXT
+		# CLASS            BORDER       BACKGROUND   TEXT
 		focused_workspace  $bg          $bg          $magenta
 		inactive_workspace $bg          $bg          $fg
 		active_workspace   $bg          $bg          $fg
 		urgent_workspace   $bg          $darkred     $bg
 		binding_mode       $bg          $bg          $magenta
-    }
+	}
 }
 
 ################################## Bindings ###################################
 # TODO: Move some shit to shxkd
 
 bindsym $mod+Return exec --no-startup-id $terminal
-bindsym $mod+Shift+Return exec --no-startup-id st -n __scratchpad
+bindsym $mod+Shift+Return exec --no-startup-id $terminal --class __scratchpad
 
 bindsym $mod+Shift+w exec --no-startup-id $HOME/.config/i3/scripts/fullscreen_wrap.sh st -n __nmtui -e nmtui-connect
 
@@ -325,3 +326,4 @@ bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -10; pkill -RTMIN
 
 bindsym XF86KbdBrightnessUp   exec --no-startup-id "kbdlight up 10"
 bindsym XF86KbdBrightnessDown exec --no-startup-id "kbdlight down 10"
+
