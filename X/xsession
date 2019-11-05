@@ -8,11 +8,12 @@ xrandr --output DP-0 --primary
 mpd &
 dunst &
 
-hsetroot -fill ~/.wallpaper
+hsetroot -fill ~/.wallpapers/yDpuXU0.jpg
 unclutter -b --timeout 3 &
-nm-applet &
 
-dropbox-cli start &
+setxkbmap -option caps:escape
+xset m 0 0
+xset r rate 150 50
 
 # Sets default cursor to be a left ptr and not an X
 xsetroot -cursor_name left_ptr &
