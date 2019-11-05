@@ -39,6 +39,12 @@ else
 	yay -S --noconfirm --needed - < ${DIR}/packages.txt
 	yay -S --noconfirm nvidia-beta
 
+	if [[ -z `which conda` ]]; then
+		curl -LO 'https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh'
+		bash Miniconda3-latest-Linux-x86_64.sh -p ~/miniconda3
+		rm -f Miniconda3-latest-Linux-x86_64.sh
+	fi
+
 	systemctl enable --now docker
 	sudo usermod -aG docker $USER
 	echo "All done, please restart your computer"
