@@ -34,7 +34,7 @@ alias d='dirs -v | head -10'
 # Fast editing
 
 # Check external ip
-alias ip='wget -qO- http://ipecho.net/plain ; echo'
+alias external_ip='wget -qO- http://ipecho.net/plain ; echo'
 
 # Alias for less
 alias less='less --ignore-case --LONG-PROMPT --underline-special --SILENT'
@@ -45,6 +45,7 @@ alias zmv='zmv -W'
 
 # Faster
 alias e=$EDITOR
+alias vim=$EDITOR
 
 # Virtual environments
 alias so='source'
