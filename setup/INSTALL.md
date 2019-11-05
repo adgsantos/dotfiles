@@ -26,6 +26,8 @@ mount /dev/sdXY /mnt # where X is the disk where the partitions are and Y is the
 mkdir /mnt/{home,boot}
 mount /dev/sdXZ /mnt/boot
 mount /dev/sdXW /mnt/home
+mkdir /storage
+mount /dev/sdJK /storage
 ```
 
 # 2. Installing base system
@@ -37,7 +39,7 @@ systemctl start dhcpcd@<INTERFACE_NAME> # connect to it
 
 ### Install base system
 ```sh
-pacstrap -i /mnt base base-devel linux linux-firmware
+pacstrap -i /mnt base base-devel linux linux-headers linux-firmware
 ```
 
 ### Generate fstab file
@@ -51,6 +53,11 @@ genfstab -U -p /mnt >> /mnt/etc/fstab
 ### Configuring system
 ```sh
 arch-chroot /mnt
+```
+
+### Helper packages
+```sh
+pacman -S vim git
 ```
 
 #### Locale
@@ -169,22 +176,14 @@ add `resume` in `HOOKS` after `udev` like so:
 rebuild it:
 `mkinitcpio -p linux`
 
+### Download network manager
+```sh
+pacman -S networkmanager
+```
 
 ### Pos-installation configuration
 
-### Install yaourt
+### Enable network manager
 ```sh
-yaourt -S --noconfirm \
-	linux-headers \
-	dialog \
-	wpa_supplicant \
-	networkmanager
-
-systemctl start NetworkManager.service
-systemctl enable NetworkManager.service
-```
-
-### Install broadcom drivers
-```sh
-yaourt -S --noconfirm broadcom-wl-dkms
+systemctl enable --now NetworkManager.service
 ```
