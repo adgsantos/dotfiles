@@ -28,5 +28,18 @@ if [[ `uname -s` == 'Darwin' ]]; then
 
 	$(brew --prefix)/opt/fzf/install --all --no-fish
 else
-	yaourt -S --noconfirm --needed - < ${DIR}/package.txt
+	if [[ -z `which yay` ]]; then
+		git clone https://aur.archlinux.org/yay.git /tmp/yay
+		cur=`pwd`
+		cd /tmp/yay
+		makepkg -si
+		cd $cur
+	fi
+
+	yay -S --noconfirm --needed - < ${DIR}/packages.txt
+	yay -S --noconfirm nvidia-beta
+
+	systemctl enable --now docker
+	sudo usermod -aG docker $USER
+	echo "All done, please restart your computer"
 fi
