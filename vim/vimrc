@@ -722,6 +722,12 @@ augroup ft_tmux
 	au FileType tmux setlocal tw=0
 augroup END
 " }}}
+" YAML {{{
+augroup ft_yaml
+	au!
+	au FileType yaml setlocal sw=2
+augroup END
+" }}}
 " Zsh {{{
 
 augroup ft_zsh
