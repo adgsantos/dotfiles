@@ -11,9 +11,7 @@ dunst &
 hsetroot -fill ~/.wallpapers/yDpuXU0.jpg
 unclutter -b --timeout 3 &
 
-setxkbmap -option caps:escape
-xset m 0 0
-xset r rate 150 50
+~/scripts/kbd_init.sh
 
 # Sets default cursor to be a left ptr and not an X
 xsetroot -cursor_name left_ptr &
