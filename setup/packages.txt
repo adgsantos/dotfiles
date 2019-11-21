@@ -51,6 +51,11 @@ vim
 neovim
 python2-neovim
 python-neovim
+python-pipenv
+python-qrcode
+python-maybe
+python-tqdm
+python-pexpect
 google-chrome
 pptpclient
 networkmanager-pptp
