@@ -2,3 +2,5 @@
 
 ! Map composite key to `super`
 keycode 135 = Super_L
+
+keycode 9 = grave asciitilde
