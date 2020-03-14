@@ -7,11 +7,14 @@ xrandr --output DP-0 --primary
 # Some programs
 mpd &
 dunst &
+solaar &
+alttab -font "xft:-*meslo lg l dz*" -i 100x100 -t 200x200 -d 1 -p "center" &
 
-hsetroot -fill ~/.wallpapers/yDpuXU0.jpg
+hsetroot -fill ~/.wallpapers/wallpaper.jpg
 unclutter -b --timeout 3 &
 
 ~/scripts/kbd_init.sh
+xmodmap ~/.Xmodmap
 
 # Sets default cursor to be a left ptr and not an X
 xsetroot -cursor_name left_ptr &
