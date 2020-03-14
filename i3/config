@@ -310,10 +310,9 @@ bindsym $mod+Shift+Tab move container to workspace back_and_forth
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
-bindsym XF86AudioLowerVolume exec --no-startup-id $HOME/scripts/volume.sh down 5
-bindsym XF86AudioRaiseVolume exec --no-startup-id $HOME/scripts/volume.sh up 5
-
-bindsym XF86AudioMute exec --no-startup-id $HOME/scripts/volume.sh toggle
+bindsym XF86AudioLowerVolume exec --no-startup-id $HOME/scripts/volume_control.py down 5
+bindsym XF86AudioRaiseVolume exec --no-startup-id $HOME/scripts/volume_control.py up 5
+bindsym XF86AudioMute exec --no-startup-id $HOME/scripts/volume_control.py toggle
 
 bindsym XF86AudioPlay exec --no-startup-id mpc toggle
 bindsym XF86AudioPrev exec --no-startup-id mpc prev
