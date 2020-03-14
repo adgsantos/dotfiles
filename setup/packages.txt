@@ -114,3 +114,13 @@ man-db
 man-pages
 ttf-meslo
 expect
+solaar
+ripgrep
+fd
+whois
+aur/tiny-irc-client-git
+ctags
+docker-compose
+gradle
+xorg-server-xephyr
+insomnia

@@ -37,9 +37,13 @@ else
 	fi
 
 	yay -S --noconfirm --needed - < ${DIR}/packages.txt
-	yay -S --noconfirm nvidia-beta
+	yay -S --noconfirm nvidia
 
 	systemctl enable --now docker
 	sudo usermod -aG docker $USER
+
+    pip install --user executor
+
+    chsh -s /bin/zsh
 	echo "All done, please restart your computer"
 fi
