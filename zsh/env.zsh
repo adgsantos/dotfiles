@@ -28,3 +28,4 @@ set_ed vi vim nvim
 
 export LC_ALL=en_US.UTF-8
 
+export PIPENV_DONT_LOAD_ENV=1
