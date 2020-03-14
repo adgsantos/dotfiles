@@ -277,9 +277,9 @@ bindsym $mod+Shift+d focus mode_toggle
 bindsym $mod+Shift+s sticky   toggle
 bindsym $mod+Shift+f floating toggle
 
-# Child & parent
-bindsym $mod+p focus parent
-bindsym $mod+c focus child
+# Next and previous workspaces
+bindsym $mod+n workspace next
+bindsym $mod+p workspace prev
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
