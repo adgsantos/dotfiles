@@ -24,7 +24,8 @@ gaps outer $default_gaps_outer
 font pango:Hack, FontAwesome 12
 
 # Draw borders around the container if it is not the only one in the workspace
-smart_borders on
+#smart_borders on
+hide_edge_borders none
 
 # Use a 1 pixel width window border
 new_window pixel 5
