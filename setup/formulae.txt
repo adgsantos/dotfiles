@@ -6,13 +6,9 @@ neovim
 tmux
 zsh
 zsh-completions
-caskroom/cask/osxfuse
-ext4fuse
 tor
 torsocks
 pdfgrep
-caskroom/cask/xquartz
-diff-pdf
 fzf
 npm
 youtube-dl
