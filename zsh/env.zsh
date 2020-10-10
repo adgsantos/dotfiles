@@ -11,6 +11,7 @@ if isdarwin; then
 fi
 
 PATH=${HOME}/scripts:${PATH}
+PATH=${HOME}/.cargo/bin:${PATH}
 
 export PATH
 
