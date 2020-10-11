@@ -26,3 +26,4 @@ pipenv
 watch
 jq
 tldr
+pipenv
