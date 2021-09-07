@@ -95,3 +95,6 @@ unfunction grep-flag-available
 alias gr='git rev-parse --show-toplevel > /dev/null && cd $(git rev-parse --show-toplevel)'
 
 alias pre="pipenv run $EDITOR"
+
+alias tmux='TERM=screen-256color tmux -2'
+alias ssh='TERM=linux ssh'

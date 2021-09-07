@@ -15,7 +15,7 @@ set $ws9  9
 set $ws10 10
 
 # Default values and configuration for gaps
-set $default_gaps_inner 10
+set $default_gaps_inner 2
 set $default_gaps_outer 4
 gaps inner $default_gaps_inner
 gaps outer $default_gaps_outer
@@ -24,10 +24,12 @@ gaps outer $default_gaps_outer
 font pango:Hack, FontAwesome 12
 
 # Draw borders around the container if it is not the only one in the workspace
-#smart_borders on
-hide_edge_borders none
+smart_borders on
+#hide_edge_borders none
 
 # Use a 1 pixel width window border
+#new_window pixel 8
+#
 new_window pixel 5
 
 workspace_auto_back_and_forth no
@@ -65,8 +67,8 @@ set_from_resource $darkwhite   color7  #000000
 set_from_resource $white       color15 #000000
 
 # CLASS                 BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
-client.focused          $bg         $bg         $magenta    $magenta    $magenta
-client.unfocused        $bg         $bg         $white      $magenta    $bg
+client.focused          $bg         $bg         $magenta    $magenta    $red
+client.unfocused        $red         $bg         $white      $magenta    $bg
 client.focused_inactive $bg         $bg         $magenta    $magenta    $bg
 client.urgent           $darkred    $darkred    $black      $darkred    $darkred
 client.background       $bg
@@ -97,6 +99,9 @@ for_window [title="(?i)lxappearance"]  floating enable
 
 for_window [title="(?i)pcmanfm"]      floating enable
 for_window [title="(?i)feh"]      floating enable
+
+for_window [class="(?i)discord"]      floating enable
+for_window [class="(?i)runelite"]      floating enable
 
 assign [instance="newsbeuter"] $ws7
 assign [instance="ncmpcpp"]    $ws8
@@ -326,4 +331,6 @@ bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -10; pkill -RTMIN
 
 bindsym XF86KbdBrightnessUp   exec --no-startup-id "kbdlight up 10"
 bindsym XF86KbdBrightnessDown exec --no-startup-id "kbdlight down 10"
+
+bindsym Print exec --no-startup-id "flameshot gui"
 

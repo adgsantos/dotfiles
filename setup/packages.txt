@@ -8,6 +8,7 @@ xorg-xset
 xorg-xprop
 xorg-xlsfonts
 xorg-xfontsel
+xorg-xev
 xdo-git
 xtitle
 xclip
@@ -124,3 +125,12 @@ docker-compose
 gradle
 xorg-server-xephyr
 insomnia
+flameshot
+firefox-extension-multi-account-containers
+gnome-shell
+gnome-control-center
+gnome-tweaks
+ulauncher
+openvpn
+networkmanager-openvpn
+kubectl

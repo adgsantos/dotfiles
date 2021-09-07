@@ -62,40 +62,29 @@ scrolling:
   # scrollback is enabled (history > 0).
   multiplier: 3
 
-  # Scroll to the bottom when new text is written to the terminal.
-  auto_scroll: false
-
-# Spaces per Tab (changes require restart)
-#
-# This setting defines the width of a tab in cells.
-#
-# Some applications, like Emacs, rely on knowing about the width of a tab.
-# To prevent unexpected behavior in these applications, it's also required to
-# change the `it` value in terminfo when altering this setting.
-tabspaces: 8
 
 # Font configuration (changes require restart)
 font:
   # Normal (roman) font face
   normal:
-    family: MesloLGSDZ
+    family: JetBrains Mono
     # The `style` can be specified to pick a specific face.
-    #style: Regular
+    style: Regular
 
   # Bold font face
   bold:
-    family: MesloLGSDZ
+    family: JetBrains Mono
     # The `style` can be specified to pick a specific face.
-    #style: Bold
+    style: Bold
 
   # Italic font face
   italic:
-    family: MesloLGSDZ
+    family: JetBrains Mono
     # The `style` can be specified to pick a specific face.
-    #style: Italic
+    style: Italic
 
   # Point size
-  size: 9
+  size: 10
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -169,6 +158,45 @@ colors:
     magenta: '0xba8baf'
     cyan:    '0x86c1b9'
     white:   '0xf8f8f8'
+
+# Base16 Gruvbox light, medium - alacritty color config
+# Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
+#colors:
+#  # Default colors
+#  primary:
+#    background: '0xfbf1c7'
+#    foreground: '0x504945'
+#
+#  # Colors the cursor will use if `custom_cursor_colors` is true
+#  cursor:
+#    text: '0xfbf1c7'
+#    cursor: '0x504945'
+#
+#  # Normal colors
+#  normal:
+#    black:   '0xfbf1c7'
+#    red:     '0x9d0006'
+#    green:   '0x79740e'
+#    yellow:  '0xb57614'
+#    blue:    '0x076678'
+#    magenta: '0x8f3f71'
+#    cyan:    '0x427b58'
+#    white:   '0x504945'
+#
+#  # Bright colors
+#  bright:
+#    black:   '0xbdae93'
+#    red:     '0xaf3a03'
+#    green:   '0xebdbb2'
+#    yellow:  '0xd5c4a1'
+#    blue:    '0x665c54'
+#    magenta: '0x3c3836'
+#    cyan:    '0xd65d0e'
+#    white:   '0x282828'
+#
+#draw_bold_text_with_bright_colors: false
+
+
 # Colors (Tomorrow Night Bright)
 #colors:
 #  # Default colors
@@ -256,7 +284,7 @@ colors:
 #   - Linear
 #
 # Specifying a `duration` of `0` will disable the visual bell.
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 0
 

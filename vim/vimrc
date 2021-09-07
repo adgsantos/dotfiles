@@ -7,7 +7,7 @@ call plug#begin('~/.vim/plugged')
 "Plug 'junegunn/vim-easy-align'
 "Plug 'kovetskiy/sxhkd-vim'
 "Plug 'Valloric/YouCompleteMe', { 'do': '/usr/local/bin/python3 ./install.py --clang-completer' }
-"Plug 'lervag/vimtex', { 'for': 'tex' }
+Plug 'lervag/vimtex', { 'for': 'tex' }
 "Plug 'vim-scripts/applescript.vim', { 'for': 'applescript' }
 "Plug 'lepture/vim-jinja'
 "Plug 'tmux-plugins/vim-tmux'
@@ -19,6 +19,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'wellle/targets.vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-abolish'
 Plug 'jiangmiao/auto-pairs'
 
 " Gui enchancements
@@ -28,11 +29,12 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'mbbill/undotree'
 "Plug 'dense-analysis/ale'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-obsession' " TODO: Add bindings to this to record sessions
 Plug 'janko/vim-test'
 
 " Fuzzy finding
-Plug 'airblade/vim-rooter'
+"Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -52,7 +54,12 @@ Plug 'chriskempson/base16-vim'
 
 Plug 'liuchengxu/vista.vim'
 
+Plug 'udalov/kotlin-vim'
+
+Plug 'will133/vim-dirdiff'
+
 " Language specific
+Plug 'rust-lang/rust.vim'
 "Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
@@ -96,10 +103,6 @@ if has ('nvim')
 		endif
 	endfunction
 
-	" Set python vars
-	let g:python3_host_prog='/usr/local/miniconda3/bin/python'
-	"let g:python3_host_prog ='/usr/local/miniconda3/bin/python'
-
 	"TODO: Linux vs OSX
 	"set rtp+=/usr/share/vim/vimfiles
 endif
@@ -137,12 +140,12 @@ set matchtime=3
 set undofile
 set undoreload=10000
 set updatetime=300
-set norelativenumber
-set nonumber
+set relativenumber
+set number
 set linebreak
 set showbreak=↪
 "set title
-set cursorline              " cursor line highlight
+"set cursorline              " cursor line highlight
 set textwidth=80
 set fillchars=diff:⣿,vert:│
 set ttyfast
@@ -219,18 +222,22 @@ endif
 "endif
 
 set t_Co=256
-set termguicolors
-"set background dark
+
+if (has("termguicolors"))
+  set termguicolors
+endif
 let base16colorspace=256  " Access colors present in 256 colorspace
+"
+let g:airline_theme='base16'
+"colorscheme base16-gruvbox-light-medium
 colorscheme base16-default-dark
-hi Normal ctermbg=NONE
 syntax on
+
 " }}}
 " Searching {{{
 
 set hlsearch                " highlights search
 set incsearch               " do incremental searching
-set ignorecase
 set smartcase
 set scrolloff=5             " X till the screen to moves down along with the lines
 
@@ -377,7 +384,7 @@ nnoremap <silent><leader>N :setlocal number!<cr>:setlocal relativenumber!<cr>
 nnoremap <silent><leader>= :let view=winsaveview()<cr>gg=G:call winrestview(view)<cr>
 
 " Substitute
-nnoremap <leader>S :%s///g<left><left><left>
+nnoremap <leader>S :%S///g<left><left><left>
 vnoremap <leader>S :s///g<left><left>
 
 " Easy buffer navigation
@@ -507,7 +514,7 @@ noremap <silent> <leader>tg :TestVisit<CR>
 """ }}}
 
 """ Coc {{{
-let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-json', 'coc-yaml', 'coc-tsserver', 'coc-html', 'coc-css']
+let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-json', 'coc-yaml', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-prettier']
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
@@ -711,6 +718,7 @@ let NERDTreeIgnore = ['\~$', '.*\.pyc$', 'pip-log\.txt$', 'whoosh_index',
 " Scratch {{{
 
 let g:scratch_height = 7
+let g:scratch_autohide = 0
 
 let g:scratch_persistence_file="~/.vim/tmp/.__scratch.vim"
 
@@ -726,7 +734,7 @@ function! ScratchToggle()
 	endif
 endfunction
 
-"nnoremap <silent> <leader><tab> :ScratchToggle<cr>
+nnoremap <silent> <leader><tab> :ScratchToggle<cr>
 
 augroup ft_scratch
 	au!
@@ -752,21 +760,23 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " }}}
+" Rust {{{
+augroup ft_rust
+    au!
+    au Filetype rust source ~/.config/nvim/scripts/spacetab.vim
+    au Filetype rust set colorcolumn=100
+augroup END
+
+let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
+let g:rustfmt_fail_silently = 0
+let g:rust_clip_command = 'xclip -selection clipboard'
+"}}}
 " Tex {{{
 
 
-let g:vimtex_view_method='skim'
+let g:vimtex_view_method='zathura'
 function! Plug_tex_cfg()
-	" Configure semantic completion
-	if !exists('g:ycm_semantic_triggers')
-		let g:ycm_semantic_triggers = {}
-	endif
-	let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
-
-	" Extra juicy text objects
-	let b:surround_{char2nr('e')} = "\\begin{\1environment: \1}\n\t\r\n\\end{\1\1}" |
-	let b:surround_{char2nr('c')} = "\\\1command: \1{\r}"
-
 	" Activate folding
 	set foldmethod=expr
 	set foldexpr=vimtex#fold#level(v:lnum)
@@ -807,6 +817,12 @@ augroup filetype_lex_yacc
 	au FileType lex,yacc setlocal tw=0
 augroup END
 
+" }}}
+" Golang {{{
+"augroup filetype_go
+"    au!
+"    au BufWritePre *.go GoImports
+"augroup END
 " }}}
 " Python {{{
 
@@ -858,7 +874,7 @@ augroup END
 " YAML {{{
 augroup ft_yaml
 	au!
-	au FileType yaml setlocal sw=2
+	au FileType yaml,javascript,typescript setlocal sw=2
 augroup END
 " }}}
 " Zsh {{{
