@@ -4,3 +4,5 @@
 if [[ ! `uname -s` == "Darwin" ]]; then
 	[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx
 fi
+
+export PATH="$HOME/.cargo/bin:$PATH"

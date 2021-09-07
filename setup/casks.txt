@@ -1,7 +1,6 @@
 alacritty
 slack
 tor-browser
-pipenv
 easy-move-plus-resize
 spectacle
 whatsapp
@@ -19,9 +18,6 @@ soundcleod
 kobo
 notion
 alacritty
-karabiner-elements
-java
-homebrew/cask-drivers/logitech-options
 docker
 karabiner-elements
 mactex

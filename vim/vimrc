@@ -370,6 +370,7 @@ nnoremap ` <C-^>
 
 " Easier clipboard management
 noremap <leader>p "+p
+noremap <leader>P "+P
 noremap <leader>y "+y
 noremap <leader>d "+d
 

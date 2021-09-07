@@ -24,7 +24,7 @@ if [[ ! -d ~/.zsh/completion ]]; then
     fi
 fi
 
-fpath=(~/.zsh/completion ~/.zsh/conda-zsh-completion $fpath)
+fpath=(~/.zsh/completion $fpath)
 zstyle ':completion::complete:*' use-cache 1
 
 if isdarwin; then
