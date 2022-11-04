@@ -360,10 +360,6 @@ nnoremap <f9> mzggg?G`z
 nnoremap <up> kddpk
 nnoremap <down> ddp
 
-" Move characters left and right
-nnoremap <left> xhP
-nnoremap <right> xp
-
 " Marks and Quotes
 noremap ' `
 nnoremap ` <C-^>
@@ -782,6 +778,21 @@ function! Plug_tex_cfg()
 	set foldmethod=expr
 	set foldexpr=vimtex#fold#level(v:lnum)
 endfunction
+
+let g:vimtex_compiler_progname = 'nvr'
+let g:tex_flavor = 'latex'
+
+let g:vimtex_compiler_latexmk = {
+        \ 'executable' : 'latexmk',
+        \ 'build_dir' : 'dist',
+        \ 'options' : [
+        \   '-pdflua',
+        \   '-file-line-error',
+        \   '-synctex=1',
+        \   '-interaction=nonstopmode',
+        \ ],
+        \}
+
 
 augroup plug_tex
 	au!

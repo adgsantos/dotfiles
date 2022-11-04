@@ -98,3 +98,6 @@ alias pre="pipenv run $EDITOR"
 
 alias tmux='TERM=screen-256color tmux -2'
 alias ssh='TERM=linux ssh'
+
+alias dc='docker-compose'
+

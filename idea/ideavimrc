@@ -1,7 +1,157 @@
-source ~/.vimrc
-
 set surround
 
-nnoremap / /
-nnoremap ? ?
+nnoremap <c-f> <nop>
 
+nnoremap G Gzz
+nnoremap n nzz
+nnoremap N Nzz
+
+nnoremap <c-[> <c-[> zz
+
+nnoremap <c-f> <c-f>zz
+nnoremap <c-b> <c-b>zz
+nnoremap <c-d> <c-d>zz
+nnoremap <c-u> <c-u>zz
+nnoremap { {zz
+nnoremap } }zz
+
+" Simplifying life (or not)
+nnoremap <tab> %
+
+" Jumpmarks
+nnoremap <c-o> <c-o>zz
+nnoremap <c-i> <c-i>zz
+
+" Use sane - magic regexes.
+nnoremap / /\v
+vnoremap / /\v
+nnoremap ? ?\v
+vnoremap ? ?\v
+
+let mapleader = ","
+let maplocalleader = "\\"
+
+" Move accordingly to screen line and not file line
+nnoremap j gj
+nnoremap k gk
+
+" First non-white space character
+noremap H g^
+noremap L g$
+vnoremap L g_
+
+" Yank to last non-white space character
+nnoremap Y y$
+
+" Since gi places the cursor to "the last place we've exited in insert mode",
+" we'll map gI to move to the last change done in insert mode.
+nnoremap gI `.
+
+" Deletes the content of a line, not the line itself with its content
+nnoremap dD 0D
+
+" New lines (below/above) current line
+noremap <cr> mzo<esc>`z
+noremap <s-cr> mzO<esc>`z
+
+vnoremap . :norm .<cr>
+
+" Easy command mode
+noremap ; :
+noremap : ;
+
+" Easy window resizing
+nnoremap <S-up> 5<c-w>-<cr>
+nnoremap <S-right> 5<c-w><<cr>
+nnoremap <S-left> 5<c-w>><cr>
+nnoremap <S-down> 5<c-w>+<cr>
+
+" Tabs
+nnoremap ) gt
+nnoremap ( gT
+
+" Panic Button
+nnoremap <f9> mzggg?G`z
+
+" Move lines
+nnoremap <up> kddpk
+nnoremap <down> ddp
+
+" Move characters left and right
+nnoremap <left> xhP
+nnoremap <right> xp
+
+" Marks and Quotes
+noremap ' `
+nnoremap ` <C-^>
+
+" Easier clipboard management
+noremap <leader>p "+p
+noremap <leader>P "+P
+noremap <leader>y "+y
+noremap <leader>d "+d
+
+" Fast configuration files editing
+nnoremap <silent><leader><leader> mz:source $MYVIMRC<cr>`z
+nnoremap <silent><leader>evc :edit $MYVIMRC<cr>
+
+" LineNumber toggling
+nnoremap <silent><leader>N :setlocal number!<cr>:setlocal relativenumber!<cr>
+
+" Remove tabs and re-indent all file
+nnoremap <silent><leader>= :let view=winsaveview()<cr>gg=G:call winrestview(view)<cr>
+
+" Substitute
+nnoremap <leader>S :%S///g<left><left><left>
+vnoremap <leader>S :s///g<left><left>
+
+" Easy buffer navigation
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+" Shell style
+inoremap <c-a> <esc>I
+inoremap <c-e> <esc>A
+cnoremap <c-a> <home>
+cnoremap <c-e> <end>
+
+" [V]split active buffer
+noremap <leader>v <C-w>v
+noremap <leader>s <C-w>s
+
+augroup clear_trailing_whitespaces
+	au!
+	au BufWritePre * silent! call ClearTrailingWhiteSpaces()
+augroup END
+
+" Function is just here since vim doesn't support negated filetype stuff
+function! ClearTrailingWhiteSpaces()
+	if(&ft != 'markdown' && expand('%p') !~ "i3blocks")
+		execute 'normal! mz:%s/\s\+$//' . "\<cr>" . ':let @/=""' . "\<cr>`z"
+	endif
+endfunction
+
+" Swap default visual and visual block modes
+nnoremap v <c-v>
+nnoremap <c-v> v
+
+" Split line (sister to [J]oin lines)
+" The normal use of S is covered by cc, so don't worry about shadowing it.
+"nnoremap <C-s> i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
+
+" Formatting {paragraphs, visual line selection}
+nnoremap Q gqip
+vnoremap Q gq
+
+" Don't move on */#
+nnoremap * *<c-o>
+nnoremap # #<c-o>
+
+noremap <F1> <nop>
+inoremap <F1> <nop>
+
+set hlsearch                " highlights search
+set incsearch               " do incremental searching
+set smartcase

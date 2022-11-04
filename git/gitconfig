@@ -1,11 +1,12 @@
 [user]
   name = André Santos
-  email = adgsantos@protonmail.com
+  email = 17305792+adgsantos@users.noreply.github.com
 
 [core]
   editor = $EDITOR
   excludesfile = ~/.gitignore
 	autocrlf = input
+  rerere = true
 
 [alias]
   tags = tag -l
@@ -38,3 +39,12 @@
 
   fixup = !sh -c 'REV=$(git rev-parse $1) && git commit --fixup $@ && git rebase -i --autosquash $REV^' -
   squash = !sh -c 'REV=$(git rev-parse $1) && git commit --squash $@ && git rebase -i --autosquash $REV^' -
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[commit]
+	gpgsign = false
+[rerere]
+	enabled = 1

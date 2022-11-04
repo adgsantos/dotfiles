@@ -101,3 +101,10 @@ function envup() {
     return 1
   fi
 }
+
+function envsup() {
+    envup
+    for t in "$@"; do
+        envup $t
+    done
+}
