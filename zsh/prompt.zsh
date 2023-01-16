@@ -22,9 +22,13 @@ function custom_time () {
 	REPLY="[`date +'%H:%M:%S'`] "
 }
 
+function newline() {
+    REPLY="$prompt_newline"
+}
+
 grml_theme_add_token c_time -f custom_time '%B%F{white}' '%f%b'
 grml_theme_add_token venv -f venv_token '%B%F{white}' '%f%b'
 grml_theme_add_token conda -f conda_prompt '%B%F{white}' '%f%b'
 grml_theme_add_token poetry -f poetry_env '%B%F{white}' '%f%b'
-zstyle ':prompt:grml:left:setup' items c_time rc conda poetry venv change-root user at \
-								 host path vcs percent
+zstyle ':prompt:grml:left:setup' items c_time rc change-root user at \
+								 host path vcs newline venv conda poetry percent
